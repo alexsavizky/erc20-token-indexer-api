@@ -27,8 +27,3 @@ def get_token_metadata(contract):
         "symbol": contract.functions.symbol().call(),
         "decimals": contract.functions.decimals().call(),
     }
-
-
-print(
-    get_token_metadata(get_erc20_contract("0x6B175474E89094C44Da98b954EedeAC495271d0F"))
-)
