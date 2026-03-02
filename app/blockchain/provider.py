@@ -1,11 +1,17 @@
 from dotenv import load_dotenv
 import os
-import requests
+from web3 import Web3
 
 load_dotenv()
 
 rpc_url = os.getenv("RPC_URL")
-payload = {"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber"}
-headers = {"Content-Type": "application/json"}
-response = requests.post(rpc_url, json=payload, headers=headers)
-print(response.text)
+if not rpc_url:
+    raise ValueError("❌ RPC_URL is not set in environment variables")
+
+w3 = Web3(Web3.HTTPProvider(rpc_url))
+
+if not w3.is_connected():
+    raise ConnectionError("❌ Failed to connect to RPC")
+
+# print("✅ Web3 provider connected")
+__all__ = ["w3"]
