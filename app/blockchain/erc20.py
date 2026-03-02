@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from web3 import Web3
-from provider import w3
+from blockchain.provider import w3
 
 ABI_PATH = Path(__file__).parent / "abis" / "erc20.json"
 
