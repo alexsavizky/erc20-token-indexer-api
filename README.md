@@ -59,13 +59,14 @@ Run the following command in your terminal (PowerShell or Bash) to build the ima
 #Build and start the containers
 -docker compose up --build
 ```
+---
 
 ## 🛠️ Troubleshooting the Initial Build
 If you encounter a connection error on the first run, it is likely because the API started faster than the database. Simply restart the API container:
 ```env
 docker compose restart api
 ```
-
+---
 ## 📡 API Endpoints
 Once the stack is running, access the server at http://localhost:8000.
 
@@ -73,16 +74,16 @@ Method,Endpoint,Description
 GET,/docs,Interactive Swagger UI (Test the API here!)
 GET,/wallet/{address},Get current indexed balance for a specific wallet.
 GET,/transfers/{address},Get historical transfer activity for a wallet.
-
-## 📡 API Endpoints
+---
+## 🏗️ Architecture Detail
 To handle the blocking nature of blockchain event loops, this project implements a Multiprocess Architecture:
 
-1.Main Process: Orchestrates the FastAPI server (Uvicorn).
+1.**Main Process**: Orchestrates the FastAPI server (Uvicorn).
+2.**Listener Process**: A daemonized child process spawned on startup that maintains a persistent filter connection to the RPC provider.
+3.**Shared Database**: Both processes communicate through the PostgreSQL container, ensuring the API always serves the most recent state captured by the listener.
 
-2.Listener Process: A daemonized child process spawned on startup that maintains a persistent filter connection to the RPC provider.
 
-3.Shared Database: Both processes communicate through the PostgreSQL container, ensuring the API always serves the most recent state captured by the listener.
-
+---
 ## 🧹 Maintenance & Commands
 Stop the system:
 ```env
@@ -93,6 +94,6 @@ Wipe data and start fresh (Removes Volumes):
 ```env
 docker compose down -v; docker compose up --build
 ```
-
+---
 ## 🛡️ License
 This project is for educational purposes. All rights reserved.
