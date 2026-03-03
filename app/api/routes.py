@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from db.session import SessionLocal
-from db.models import Wallet, TransferEvent
+from app.db.session import SessionLocal
+from app.db.models import Wallet, TransferEvent
 
 router = APIRouter()
 

@@ -1,6 +1,6 @@
 import time
-from blockchain.erc20 import get_erc20_contract
-from db.repository import save_transfer_to_db
+from app.blockchain.erc20 import get_erc20_contract
+from app.db.repository import save_transfer_to_db
 
 
 def handle_event(event):

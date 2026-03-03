@@ -13,7 +13,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
 def init_db():
-    from db.models import Base
+    from app.db.models import Base
 
     # This magic line creates the tables in Postgres based on your models.py
     Base.metadata.create_all(bind=engine)

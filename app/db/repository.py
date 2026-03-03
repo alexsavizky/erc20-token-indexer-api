@@ -1,6 +1,6 @@
 from decimal import Decimal
-from db.session import SessionLocal
-from db.models import TransferEvent, Wallet
+from app.db.session import SessionLocal
+from app.db.models import TransferEvent, Wallet
 
 
 def save_transfer_to_db(transfer_data: dict):

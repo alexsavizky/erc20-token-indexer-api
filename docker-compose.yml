@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: indexer_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: snorlax
+      POSTGRES_DB: erc20_indexer
+    ports:
+      - "5432:5432"
+
+  api:
+    build: .
+    container_name: indexer_api
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:snorlax@db:5432/erc20_indexer
+      - RPC_URL=
+      - TOKEN_ADDRESS=0xdAC17F958D2ee523a2206206994597C13D831ec7
+    ports:
+      - "8000:8000"
