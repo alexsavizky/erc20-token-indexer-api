@@ -69,11 +69,12 @@ docker compose restart api
 ---
 ## 📡 API Endpoints
 Once the stack is running, access the server at http://localhost:8000.
+| Method   |    Endpoint   |  Description |
+|----------|:-------------:|-------------:|
+| GET | /docs | Interactive Swagger UI (Test the API here!) |
+| GET |  /wallet/{address} |  Get current indexed balance for a specific wallet. |
+| GET | //transfers/{address}|   Get historical transfer activity for a wallet. |
 
-Method,Endpoint,Description
-GET,/docs,Interactive Swagger UI (Test the API here!)
-GET,/wallet/{address},Get current indexed balance for a specific wallet.
-GET,/transfers/{address},Get historical transfer activity for a wallet.
 ---
 ## 🏗️ Architecture Detail
 To handle the blocking nature of blockchain event loops, this project implements a Multiprocess Architecture:
