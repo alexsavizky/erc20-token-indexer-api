@@ -21,6 +21,6 @@
 #         print("✅ Success! Tables created.")
 #     except Exception as e:
 #         print(f"❌ Connection failed: {e}")
-from blockchain.listener import start_listening
+# from blockchain.listener import start_listening
 
-start_listening("0xdAC17F958D2ee523a2206206994597C13D831ec7")
+# start_listening("0xdAC17F958D2ee523a2206206994597C13D831ec7")
